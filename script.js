@@ -1,12 +1,13 @@
 const qs = (selector) => document.querySelector(selector);
 const question = qs(".question");
 const idea = qs(".idea");
-const gif = qs(".gif");
+const gif = qs("#gif");
 const [yesBtn, noBtn] = [".yes-btn", ".no-btn"].map(qs);
+let firstDate = true;
 
 const handleYesClick = () => {
   question.innerHTML = "Hehe! Can't wait to finally see you in person!!";
-  gif.src = "https://media.giphy.com/media/UMon0fuimoAN9ueUNP/giphy.gif";
+  gif.src = "https://cdn.discordapp.com/emojis/471963848191246336.webp?size=96";
 
   noBtn.removeEventListener("mouseover", handleNoMouseOver);
 
@@ -50,14 +51,20 @@ const handleYesClick = () => {
     letsGoBtn.style.left = "63%";
   }
 
-  letsGoBtn.style.transform = "translate(-50%, -50%)";
+  letsGoBtn.style.transform = "translate(-75%, -75%)";
   letsGoBtn.style.width = "200px";
 
   letsGoBtn.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * dateIdeas.length);
+    let randomIndex;
+    if (firstDate) {
+      randomIndex = Math.floor(Math.random() * (dateIdeas.length - 3)) + 3;
+    } else {
+      randomIndex = Math.floor(Math.random() * dateIdeas.length);
+    }
+    firstDate = false;
     const selectedDateIdea = dateIdeas[randomIndex];
 
-    idea.innerHTML = `How about this romantic date idea: ${selectedDateIdea}`;
+    idea.innerHTML = `How about this idea: ${selectedDateIdea}`;
   });
 
   yesBtn.replaceWith(letsGoBtn);
