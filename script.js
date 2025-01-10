@@ -3,7 +3,9 @@ const question = qs(".question");
 const idea = qs(".idea");
 const gif = qs("#gif");
 const [yesBtn, noBtn] = [".yes-btn", ".no-btn"].map(qs);
-let firstDate = true;
+//let firstDate = true;
+
+// add comments back in for NSFW prompts
 
 const handleYesClick = () => {
   question.innerHTML = "Hehe! Can't wait to finally see you in person!!";
@@ -14,9 +16,9 @@ const handleYesClick = () => {
   noBtn.remove();
 
   const dateIdeas = [
-    "Cuddle in my hotel for a while",
-    "Dick you down relentlessly",
-    "Have you show just how much of a sub you truly are",
+    //"Cuddle in my hotel for a while",
+    //"Dick you down relentlessly",
+    //"Have you show just how much of a sub you truly are",
     "Cook a romantic dinner together",
     "Go for a moonlit walk on the beach",
     "Have a picnic in the park",
@@ -56,12 +58,12 @@ const handleYesClick = () => {
 
   letsGoBtn.addEventListener("click", () => {
     let randomIndex;
-    if (firstDate) {
-      randomIndex = Math.floor(Math.random() * (dateIdeas.length - 3)) + 3;
-    } else {
+    //if (firstDate) {
+    //  randomIndex = Math.floor(Math.random() * (dateIdeas.length - 3)) + 3;
+    //} else {
       randomIndex = Math.floor(Math.random() * dateIdeas.length);
-    }
-    firstDate = false;
+    //}
+    //firstDate = false;
     const selectedDateIdea = dateIdeas[randomIndex];
 
     idea.innerHTML = `How about this idea: ${selectedDateIdea}`;
